@@ -1,7 +1,9 @@
+//! This module defines the [`Toggle`] widget that can be toggled on and off.
 use macroquad::prelude::*;
 
 use super::widget::{Widget, Action};
 
+/// A [`Toggle`] widget that once clicked, toggles its state between on and off.
 pub struct Toggle {
     width: f32,
     height: f32,
@@ -16,6 +18,7 @@ pub struct Toggle {
 }
 
 impl Toggle {
+    /// Creates a new [`Toggle`] widget.
     pub fn new(width: f32, height: f32, text: String, bg: Color, fg: Color, font: Option<Font>) -> Self {
         Self {
             width,

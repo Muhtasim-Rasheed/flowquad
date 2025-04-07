@@ -1,7 +1,9 @@
+//! This module defines the [`Label`] widget that displays text on the screen.
 use macroquad::prelude::*;
 
 use super::widget::Widget;
 
+/// The [`Label`] widget that displays text on the screen.
 pub struct Label {
     text: String,
     bg: Color,
@@ -11,6 +13,7 @@ pub struct Label {
 }
 
 impl Label {
+    /// Creates a new [`Label`] widget.
     pub fn new(text: String, bg: Color, fg: Color, font: Option<Font>, size: f32) -> Self {
         Self {
             text,

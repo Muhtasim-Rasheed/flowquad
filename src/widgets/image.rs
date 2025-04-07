@@ -1,7 +1,9 @@
+//! This module defines the [`Image`] widget that displays an image on the screen.
 use macroquad::prelude::*;
 
 use crate::widgets::widget::Widget;
 
+/// The [`Image`] widget that displays an image on the screen.
 pub struct Image {
     height: f32,
     width: f32,
@@ -9,6 +11,7 @@ pub struct Image {
 }
 
 impl Image {
+    /// Creates a new [`Image`] widget.
     pub fn new(height: f32, width: f32, texture: Texture2D) -> Self {
         Self {
             height,

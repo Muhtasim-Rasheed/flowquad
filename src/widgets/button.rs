@@ -1,7 +1,9 @@
+//! This module defines the [`Button`] widget that can be clicked to perform an action.
 use macroquad::prelude::*;
 
 use super::widget::{Widget, Action};
 
+/// A [`Button`] widget that can be clicked to perform an action.
 pub struct Button {
     width: f32,
     height: f32,
@@ -15,6 +17,7 @@ pub struct Button {
 }
 
 impl Button {
+    /// Creates a new [`Button`] widget.
     pub fn new(width: f32, height: f32, text: String, bg: Color, fg: Color, font: Option<Font>) -> Self {
         Self {
             width,

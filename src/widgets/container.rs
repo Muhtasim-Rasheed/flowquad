@@ -1,18 +1,32 @@
+//! This module defines the [`Container`] widget, which is a container for other widgets.
+//!
+//! This module contains the following:
+//! 1. The [`Container`] struct, which is a container for other widgets, it itself implements the
+//!     [`Widget`] trait.
+//! 2. The [`Direction`] enum, which defines the direction of the container, either horizontal or
+//!     vertical.
+//! 3. The [`Align`] enum, which defines the alignment of the container, either start, center or
+//!     end.
 use macroquad::prelude::*;
 
 use super::widget::Widget;
 
+/// The [`Direction`] enum defines the direction of the container, either horizontal or vertical.
 pub enum Direction {
     Horizontal,
     Vertical,
 }
 
+/// The [`Align`] enum defines the alignment of the container, either start, center or end.
 pub enum Align {
     Start,
     Center,
     End,
 }
 
+/// The [`Container`] struct is a container for other widgets, it itself implements the [`Widget`],
+/// making it nest-able. It can contain other widgets and arrange them in a specified [`Direction`]
+/// and [`Align`]ment.
 pub struct Container {
     direction: Direction,
     align: Align,
@@ -24,6 +38,7 @@ pub struct Container {
 }
 
 impl Container {
+    /// Creates a new [`Container`] widget.
     pub fn new(direction: Direction, align: Align, gap: f32, bg: Color, padding: Option<(f32, f32, f32, f32)>, border: Option<(f32, Color)>) -> Self {
         Self {
             direction,
@@ -35,7 +50,8 @@ impl Container {
             border,
         }
     }
-
+    
+    /// Adds a child [`Widget`] to the container.
     pub fn add_child(&mut self, child: Box<dyn Widget>) {
         self.children.push(child);
     } 
