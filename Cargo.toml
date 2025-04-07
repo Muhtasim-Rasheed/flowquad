@@ -3,7 +3,7 @@ name = "flowquad"
 description = "Flowquad is a library that helps you build UI stuff with Macroquad."
 license = "MIT"
 repository = "https://github.com/Muhtasim-Rasheed/flowquad"
-version = "1.1.0"
+version = "1.1.1"
 edition = "2024"
 
 [dependencies]

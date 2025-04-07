@@ -1,4 +1,4 @@
-//! This module defines the [`TextInput`] widget that displays text on the screen.
+//! This module defines the [`TextInput`] widget that allows the user to enter text.
 use std::any::Any;
 
 use macroquad::prelude::*;
@@ -21,7 +21,7 @@ fn truncate_text_to_fit(text: &str, max_width: f32, font: Option<&Font>, size: u
     result
 }
 
-/// The [`TextInput`] widget that displays text on the screen.
+/// The [`TextInput`] widget that allows the user to enter text.
 pub struct TextInput {
     text: String,
     pos: u32,
