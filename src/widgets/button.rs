@@ -1,4 +1,6 @@
 //! This module defines the [`Button`] widget that can be clicked to perform an action.
+use std::any::Any;
+
 use macroquad::prelude::*;
 
 use super::widget::{Widget, Action};
@@ -12,7 +14,6 @@ pub struct Button {
     fg: Color,
     hover: bool,
     click: bool,
-    just_clicked: bool,
     font: Option<Font>,
 }
 
@@ -27,13 +28,16 @@ impl Button {
             fg,
             hover: false,
             click: false,
-            just_clicked: false,
             font,
         }
     }
 }
 
 impl Widget for Button {
+    fn as_any(&self) -> &dyn Any {
+        self
+    }
+
     fn width(&self) -> f32 {
         self.width
     }
@@ -52,8 +56,7 @@ impl Widget for Button {
         let my = mouse_pos.1;
 
         self.hover = mx >= x && mx <= x + self.width && my >= y && my <= y + self.height;
-        self.click = self.hover && is_mouse_button_down(MouseButton::Left);
-        self.just_clicked = self.hover && is_mouse_button_pressed(MouseButton::Left);
+        self.click = self.hover && is_mouse_button_pressed(MouseButton::Left);
     }
 
     fn render(&self, x: f32, y: f32) {
@@ -83,7 +86,7 @@ impl Widget for Button {
 
 impl Action for Button {
     fn is_clicked(&self) -> bool {
-        self.just_clicked
+        self.click
     }
 
     fn is_hovered(&self) -> bool {

@@ -7,6 +7,8 @@
 //!     vertical.
 //! 3. The [`Align`] enum, which defines the alignment of the container, either start, center or
 //!     end.
+use std::any::Any;
+
 use macroquad::prelude::*;
 
 use super::widget::Widget;
@@ -54,10 +56,26 @@ impl Container {
     /// Adds a child [`Widget`] to the container.
     pub fn add_child(&mut self, child: Box<dyn Widget>) {
         self.children.push(child);
-    } 
+    }
+
+    /// Gets a child [`Widget`] from the container.
+    pub fn get_child(&self, index: usize) -> Option<&Box<dyn Widget>> {
+        self.children.get(index)
+    }
+
+    /// Gets a child [`Widget`] from the container and downcasts it to the specified type.
+    pub fn get_child_as<T: 'static>(&self, index: usize) -> Option<&T> {
+        self.children.get(index)?
+            .as_any()
+            .downcast_ref::<T>()
+    }
 }
 
 impl Widget for Container {
+    fn as_any(&self) -> &dyn Any {
+        self
+    }
+
     fn width(&self) -> f32 {
         let base_width = match self.direction {
             Direction::Horizontal => {

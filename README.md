@@ -3,7 +3,11 @@ Flowquad is a library that helps you build UI stuff with [Macroquad](https://mac
 
 # Features
 - [x] UI Elements (Widgets)
-- That's it really, but it's a start!
+  - [x] Button
+  - [x] Container
+  - [x] Label
+  - [x] TextInput
+  - [x] Toggle
 
 # Getting Started
 

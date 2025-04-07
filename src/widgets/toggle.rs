@@ -1,4 +1,6 @@
 //! This module defines the [`Toggle`] widget that can be toggled on and off.
+use std::any::Any;
+
 use macroquad::prelude::*;
 
 use super::widget::{Widget, Action};
@@ -12,7 +14,6 @@ pub struct Toggle {
     fg: Color,
     hover: bool,
     toggle: bool,
-    click: bool,
     just_clicked: bool,
     font: Option<Font>,
 }
@@ -28,7 +29,6 @@ impl Toggle {
             fg,
             hover: false,
             toggle: false,
-            click: false,
             just_clicked: false,
             font,
         }
@@ -36,6 +36,10 @@ impl Toggle {
 }
 
 impl Widget for Toggle {
+    fn as_any(&self) -> &dyn Any {
+        self
+    }
+
     fn width(&self) -> f32 {
         self.width
     }
@@ -54,7 +58,6 @@ impl Widget for Toggle {
         let my = mouse_pos.1;
 
         self.hover = mx >= x && mx <= x + self.width && my >= y && my <= y + self.height;
-        self.click = self.hover && is_mouse_button_down(MouseButton::Left);
         self.just_clicked = self.hover && is_mouse_button_pressed(MouseButton::Left);
         self.toggle = if self.just_clicked { !self.toggle } else { self.toggle };
     }

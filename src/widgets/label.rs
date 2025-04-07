@@ -1,4 +1,6 @@
 //! This module defines the [`Label`] widget that displays text on the screen.
+use std::any::Any;
+
 use macroquad::prelude::*;
 
 use super::widget::Widget;
@@ -26,6 +28,10 @@ impl Label {
 }
 
 impl Widget for Label {
+    fn as_any(&self) -> &dyn Any {
+        self
+    }
+
     fn width(&self) -> f32 {
         let size = self.height() as u16;
         let text_size = measure_text(&self.text, self.font.as_ref(), size, 1.0);

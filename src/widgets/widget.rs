@@ -1,8 +1,11 @@
 //! This module defines the [`Widget`] trait and the [`Action`] trait for UI elements.
 use macroquad::prelude::*;
+use std::any::Any;
 
 /// The [`Widget`] trait which defines the basic properties and methods for UI elements.
-pub trait Widget {
+pub trait Widget: Any {
+    /// Returns the type of the widget as an [`Any`] type.
+    fn as_any(&self) -> &dyn Any;
     /// Returns the width of the widget.
     fn width(&self) -> f32;
     /// Returns the height of the widget.

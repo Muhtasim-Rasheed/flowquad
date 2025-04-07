@@ -1,4 +1,6 @@
 //! This module defines the [`Image`] widget that displays an image on the screen.
+use std::any::Any;
+
 use macroquad::prelude::*;
 
 use crate::widgets::widget::Widget;
@@ -22,6 +24,10 @@ impl Image {
 }
 
 impl Widget for Image {
+    fn as_any(&self) -> &dyn Any {
+        self
+    }
+
     fn width(&self) -> f32 {
         self.width
     }
