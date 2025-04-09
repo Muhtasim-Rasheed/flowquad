@@ -1,8 +1,5 @@
 use macroquad::prelude::*;
-use flowquad::widgets::button::Button;
-use flowquad::widgets::label::Label;
-use flowquad::widgets::toggle::Toggle;
-use flowquad::widgets::widget::{Widget, Action};
+use flowquad::prelude::*;
 
 #[macroquad::main("Hello World Example")]
 async fn main() { 

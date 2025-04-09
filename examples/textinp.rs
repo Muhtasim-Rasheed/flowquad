@@ -1,8 +1,5 @@
 use macroquad::prelude::*;
-use flowquad::widgets::container::{ Align, Direction, Container };
-use flowquad::widgets::label::Label;
-use flowquad::widgets::textinput::TextInput;
-use flowquad::widgets::widget::Widget;
+use flowquad::prelude::*;
 
 #[macroquad::main("Images!")]
 async fn main() {

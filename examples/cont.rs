@@ -1,9 +1,5 @@
 use macroquad::prelude::*;
-use flowquad::widgets::label::Label;
-use flowquad::widgets::button::Button;
-use flowquad::widgets::toggle::Toggle;
-use flowquad::widgets::container::Container;
-use flowquad::widgets::widget::Widget;
+use flowquad::prelude::*;
 
 fn window_conf() -> Conf {
     Conf {

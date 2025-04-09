@@ -1,8 +1,5 @@
 use macroquad::prelude::*;
-use flowquad::widgets::container::{ Align, Direction, Container };
-use flowquad::widgets::label::Label;
-use flowquad::widgets::image::Image;
-use flowquad::widgets::widget::Widget;
+use flowquad::prelude::*;
 
 #[macroquad::main("Images!")]
 async fn main() {
@@ -10,7 +7,7 @@ async fn main() {
     let label = Label::new("Images!".to_string(), Color::new(0.05, 0.05, 0.1, 1.0), Color::new(0.5, 0.5, 1.0, 1.0), Some(poppins.clone()), 48.0);
     let texture = load_texture("examples/flowquad.png").await.unwrap();
     texture.set_filter(FilterMode::Nearest);
-    let image = Image::new(256.0, 384.0, texture);
+    let image = flowquad::widgets::image::Image::new(256.0, 384.0, texture);
     let mut container = Container::new(Direction::Vertical, Align::Center, 20.0, Color::new(0.05, 0.05, 0.1, 1.0), None, None);
     container.add_child(Box::new(label));
     container.add_child(Box::new(image));
